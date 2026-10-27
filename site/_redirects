@@ -1,0 +1,33 @@
+# Old WordPress addresses
+/portfolio/  /work  301
+/portfolio  /work  301
+/our-services/  /websites  301
+/our-services  /websites  301
+/leave-us-a-note/  /start  301
+/leave-us-a-note  /start  301
+/portfolio-category/web-design/*  /website-work  301
+/portfolio-category/*  /work  301
+/portfolio-item/stussy/  /project-stussy  301
+/portfolio-item/stussy  /project-stussy  301
+/portfolio-item/bloved/  /project-bloved  301
+/portfolio-item/bloved  /project-bloved  301
+/portfolio-item/vitalitea/  /project-vitalitea  301
+/portfolio-item/vitalitea  /project-vitalitea  301
+/portfolio-item/twitch-dsptch/  /project-twitch  301
+/portfolio-item/twitch-dsptch  /project-twitch  301
+/portfolio-item/lucid/  /project-lucid  301
+/portfolio-item/lucid  /project-lucid  301
+/portfolio-item/mcds/  /project-mcds  301
+/portfolio-item/mcds  /project-mcds  301
+/portfolio-item/bippy/  /project-bippy  301
+/portfolio-item/bippy  /project-bippy  301
+/portfolio-item/noahsystem/  /project-noah-system-co  301
+/portfolio-item/noahsystem  /project-noah-system-co  301
+/portfolio-item/paddle-oregon/  /project-paddle-oregon  301
+/portfolio-item/paddle-oregon  /project-paddle-oregon  301
+/portfolio-item/*  /work  301
+
+# Routes from the strategy doc
+/websites/pricing  /packages  301
+/work/websites  /website-work  301
+/design-support/pricing  /design-plans  301
