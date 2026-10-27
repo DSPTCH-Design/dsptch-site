@@ -39,8 +39,6 @@ PROJECTS = [
          color="#D6D3CC", summary="A logistics brand built on one idea: forward motion. The arrow-and-X mark carries through everything, from trailer livery and hi-vis to billboards, social posts and the app icon.",
          images=[f"{i:02d}.jpg" for i in range(1, 12)]),
     # ---- Creative: work carried over from the previous dsptchdesign.com (old WordPress slug in `old`)
-    dict(slug='stussy', name='Stüssy', type="creative", label='Brand creative', basis="Bespoke engagement", old='stussy', upl='2025/01',
-         deliverables='To confirm', color="#D6D3CC", images=['Stussy_S1.jpg', 'Stussy_S2.jpg', 'Stussy_S3.jpg', 'Stussy_S4.jpg', 'Stussy_S5.jpg', 'Stussy_S6.jpg', 'Stussy_S7.jpg']),
     dict(slug='bloved', name='Bloved', type="creative", label='Identity · Packaging · Website', basis="Bespoke engagement", old='bloved', upl='2021/06',
          deliverables='Logo identity, style guide, packaging, website', color="#D6D3CC", summary='A refreshed identity for a cannabis wellness brand made for women: a relaxed, natural voice with an upbeat, energetic look.', images=['Bloved_Mockup.jpg', 'Bloved_Logo.jpg', 'Bloved_homepage-u.jpg', 'Bloved_Cans04.jpg', 'Bloved_Cans03.jpg', 'Bloved_Cans02.jpg', 'Bloved_Cans01.jpg', 'bloved_brand-guide_05.jpg', 'bloved_brand-guide_04.jpg', 'bloved_brand-guide_03.jpg', 'bloved_brand-guide_02.jpg', 'bloved_brand-guide_01.jpg']),
     dict(slug='vitalitea', name='Vitalitea', type="creative", label='Packaging · Identity', basis="Bespoke engagement", old='vitalitea', upl='2023/02',
@@ -53,28 +51,16 @@ PROJECTS = [
          deliverables='To confirm', color="#D6D3CC", images=['MD2.jpg', 'MD3.jpg', 'MD4.jpg', 'MD5.jpg', 'MD8.jpg', 'MD12.jpg', 'MD13.jpg', 'MD19.jpg']),
     dict(slug='rise-cannabis', name='Rise Cannabis', type="creative", label='Identity · Packaging · Website', basis="Bespoke engagement", old='rise-cannabis', upl='2023/02',
          deliverables='Rebrand, packaging, website', color="#D6D3CC", summary='A rebrand and new website for a multi-state cannabis brand, built to keep pace with a market where the rules keep changing.', images=['Rise_Mock-4.jpg', 'Rise_Mock-2.jpg', 'Rise_Mock-1.jpg', 'Rise_Mock-3.jpg', 'Rise_Mock-7.jpg', 'Rise_Mock-6.jpg', 'Rise_Mock-5.jpg']),
-    dict(slug='oars-and-alps', name='Oars & Alps', type="creative", label='Brand · Ecommerce', basis="Bespoke engagement", old='oarsandalps', upl='2021/06',
-         deliverables='Brand, ecommerce site', color="#D6D3CC", summary='A relaunched online presence for a premium natural skincare brand for men, built to lift conversions.', images=['OA_Mock-5.jpg', 'OA_Mock-2.jpg', 'OA_Mock-1.jpg', 'OA_Mock-4.jpg', 'OA_Mock-3.jpg', 'unnamed-file.jpg']),
     dict(slug='overseas-strategies', name='Overseas Strategies', type="creative", label='Identity · Print · Website', basis="Bespoke engagement", old='overseas', upl='2021/06',
          deliverables='Rebrand, print, website', color="#D6D3CC", summary='A rebrand and aesthetic overhaul for an international business development and training consultancy.', images=['OS_Bizcard_Mock.jpg', 'OS_Identity.png', 'OS_Homepage-u.jpg', 'OS_AboutPage-u.jpg']),
-    dict(slug='tg-aware', name='TG Aware', type="creative", label='Campaign · Website', basis="Bespoke engagement", old='tg-aware', upl='2023/02',
-         deliverables='Awareness campaign, website', color="#D6D3CC", summary='An awareness initiative for hypertriglyceridemia, a condition linked to pancreatitis, stroke and heart disease.', images=['TGAware_MOCK-1.jpg', 'TG_Desktop-HOMEPAGE-u.jpg', 'TGAware_MOCK-3.jpg', 'TGAware_MOCK-2.jpg']),
     dict(slug='oneness', name='Oneness', type="creative", label='Identity · Website', basis="Bespoke engagement", old='oneness', upl='2021/06',
          deliverables='Visual identity, website', color="#D6D3CC", summary='A visual identity for a whole-plant hemp water, with a mark that brings together yoga and technology.', images=['Oneness_Mock-4.jpg', 'Oneness_Mock-2.jpg', 'Oneness_Mock-3.jpg', 'Oneness_Mock-1-u.jpg']),
-    dict(slug='american-hockey-puck-co', name='American Hockey Puck Co.', type="creative", label='Identity · Apparel · Ecommerce', basis="Bespoke engagement", old='ahpc', upl='2021/06',
-         deliverables='Logo, visual language, Shopify website', color="#D6D3CC", summary='A lifestyle brand mixing hockey with Americana athletics: an apparel-ready logo and a Shopify store.', images=['AHPC_Mockups.jpg', 'AHPC_Home_New_D-u.jpg', 'AHPC_PDP_UPDATE_D-u.jpg', 'AHPC_Tees.jpg']),
     dict(slug='plus-red-elixir', name='+RED Elixir', type="creative", label='Website', basis="Bespoke engagement", old='plus-red-elixir', upl='2023/02',
          deliverables='Website', color="#D6D3CC", summary='An energetic online presence for a premium energy drink brand five years in development.', images=['iMac-01-Standard-Mockup.jpg', 'iPhone-12-01-Standard-Mockup-1.jpg', 'iPhone-13-scenes-2-1.jpg', 'Red_Homepage-Desktop-u.jpg', 'PRE_Blog-u.jpg']),
-    dict(slug='skylight-coffee', name='Skylight Coffee', type="creative", label='Identity', basis="Bespoke engagement", old='skylight-coffee', upl='2023/02',
-         deliverables='Brand identity', color="#D6D3CC", summary='A clean, contemporary brand identity for a coffee company.', images=['Skylight_Mock-1.jpg']),
-    dict(slug='sturgeons-tree-surgeons', name='Sturgeons Tree Surgeons', type="creative", label='Illustration · Identity · Merch', basis="Bespoke engagement", old='sturgeons-tree-surgeons', upl='2023/02',
-         deliverables='Illustrated logo, merchandise, website', color="#D6D3CC", summary='A custom illustrated logo and merchandise for a tree surgery company.', images=['STS_Merch-2.jpg', 'STS_Merch-1.jpg', 'STS_Website_Home_u.jpg']),
     dict(slug='logi-analytics', name='Logi Analytics', type="creative", label='Advertising · Landing pages', basis="Bespoke engagement", old='logi', upl='2021/06',
          deliverables='Brand advertising, landing page', color="#D6D3CC", summary='Brand advertising and landing pages to set a developer-grade analytics company apart from its competitors.', images=['Logi_Ads.jpg', 'LA_BrandAd_4.jpg', 'LA_BrandAd_2.jpg', 'LA_BrandAd_1.jpg', 'LA_BrandAd_3.jpg', 'Logi_LandingPage_u.jpg']),
     dict(slug='christian-banach', name='Christian Banach', type="creative", label='Website', basis="Bespoke engagement", old='christian-banach', upl='2023/02',
          deliverables='Website', color="#D6D3CC", summary='A contemporary website for a business development consultancy that wins 6- and 7-figure deals for agencies.', images=['Pro-Display-XDR-01-Standard-Mockup-1.jpg', 'CB_Homepage-Desktop-u2.jpg', 'Pro-Display-XDR-02-Standard-Mockup.jpg', 'iPhone-13-scenes-1-3-1.jpg']),
-    dict(slug='my-nu-leng', name='My Nu Leng', type="creative", label='Website', basis="Bespoke engagement", old='mynuleng', upl='2021/06',
-         deliverables='Website', color="#D6D3CC", summary='A new online presence for an electronic dance duo rooted in rave culture.', images=['MYL_Mockup.jpg', 'MYL_Homepage_040320-u.jpg']),
     dict(slug='exwrks', name='ExWrks', type="creative", label='Identity', basis="Bespoke engagement", old='exwrks', upl='2021/06',
          deliverables='Logo identity', color="#D6D3CC", summary='A logo that balances soft luxury with technical precision for a furniture and home decor brand.', images=['ExWrks_IDmockup01.jpg', 'ExWrks_IDmockup.jpg']),
     dict(slug='art-of-property', name='Art of Property', type="creative", label='Product UI', basis="Bespoke engagement", old='aop', upl='2021/06',
@@ -566,7 +552,7 @@ def project(p, i):
 
 # ---------------------------------------------------------------- design support
 def creative_examples():
-    picks = [p for p in PROJECTS if p["slug"] in ("xenro-brand", "stussy", "bloved")]
+    picks = [p for p in PROJECTS if p["slug"] in ("xenro-brand", "bloved", "vitalitea")]
     return f"""<section class="wrap sec" style="padding-top:0">
   <div class="head"><h2>Creative work</h2><a class="btn ghost" href="work.html#creative">See all creative</a></div>
   <div class="grid">{"".join(card(p) for p in picks)}</div>
