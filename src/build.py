@@ -33,6 +33,11 @@ PROJECTS = [
     dict(slug='qubik', name='QUBIK', type="website", label="Concept · Engineering", basis="Concept", url='https://qubik-ae.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='An architectural engineering firm site for commercial and industrial building: hard edges and photography-led layouts.', images=['01-cover.jpg', '02-home.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
+    # ---- Creative: brand work for the concept sites (pair = the matching website case study)
+    dict(slug="xenro-brand", name="Xenro", type="creative", label="Concept · Brand identity", basis="Concept",
+         deliverables="Logo and identity system, color palette, fleet livery, signage, uniforms and merch, packaging, out-of-home, social, app icon",
+         color="#D6D3CC", summary="A logistics brand built on one idea: forward motion. The arrow-and-X mark carries through everything, from trailer livery and hi-vis to billboards, social posts and the app icon.",
+         images=[f"{i:02d}.jpg" for i in range(1, 12)]),
     # ---- Creative: work carried over from the previous dsptchdesign.com (old WordPress slug in `old`)
     dict(slug='stussy', name='Stüssy', type="creative", label='Brand creative', basis="Bespoke engagement", old='stussy', upl='2025/01',
          deliverables='To confirm', color="#D6D3CC", images=['Stussy_S1.jpg', 'Stussy_S2.jpg', 'Stussy_S3.jpg', 'Stussy_S4.jpg', 'Stussy_S5.jpg', 'Stussy_S6.jpg', 'Stussy_S7.jpg']),
@@ -498,6 +503,26 @@ def gallery(p):
     return '<div class="gal">' + "".join(out) + "</div>"
 
 
+def pair_block(p):
+    """Cross-link a concept website and its brand case study."""
+    q = next((x for x in PROJECTS if x["slug"] == p.get("pair")), None)
+    if not q:
+        return ""
+    if q["type"] == "creative":
+        kicker, line = "Beyond the website", f"We also designed the {e(q['name'])} brand: the identity system, fleet, signage, campaign and social."
+        cta = "Explore the brand"
+    else:
+        kicker, line = "Built to work together", f"See how the {e(q['name'])} identity comes to life online, from the first click to the quote form."
+        cta = "See the website"
+    return f"""<section class="wrap sec tight">
+  <a class="pair" href="project-{q['slug']}.html">
+    <div class="img">{img_block(q)}</div>
+    <div class="pair-txt"><span class="dot">{kicker}</span><h2 class="h2s">{line}</h2><span class="btn or" style="align-self:flex-start">{cta}</span></div>
+  </a>
+</section>
+"""
+
+
 def real():
     return [p for p in PROJECTS if not p.get("placeholder")]
 
@@ -526,12 +551,6 @@ def project(p, i):
 </section>
 
 <section class="wrap sec tight">
-  {sec("challenge", "The challenge", "Case study copy to come: what the client needed and why.")}
-  {sec("approach", "Our approach", "Case study copy to come: how we approached the work.")}
-  {sec("created", "What we created", "Case study copy to come: the deliverables, in plain terms.")}
-</section>
-
-<section class="wrap sec tight">
   {gallery(p)}
 </section>
 
@@ -547,7 +566,7 @@ def project(p, i):
 
 # ---------------------------------------------------------------- design support
 def creative_examples():
-    picks = [p for p in PROJECTS if p["slug"] in ("stussy", "bloved", "vitalitea")]
+    picks = [p for p in PROJECTS if p["slug"] in ("xenro-brand", "stussy", "bloved")]
     return f"""<section class="wrap sec" style="padding-top:0">
   <div class="head"><h2>Creative work</h2><a class="btn ghost" href="work.html#creative">See all creative</a></div>
   <div class="grid">{"".join(card(p) for p in picks)}</div>
