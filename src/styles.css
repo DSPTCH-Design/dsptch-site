@@ -283,3 +283,5 @@ img{max-width:100%;display:block}
 @media (max-width:560px){.gal{grid-template-columns:1fr}}
 .gal .g-solo{grid-column:1/-1;width:calc(50% - 6px);justify-self:center}
 @media (max-width:560px){.gal .g-solo{width:100%}}
+.card[data-type="website"] .img img,.cs-hero .img img{object-position:top}
+.live{margin-top:28px}
