@@ -34,7 +34,7 @@ PROJECTS = [
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='An architectural engineering firm site for commercial and industrial building: hard edges and photography-led layouts.', images=['01-cover.jpg', '02-home.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
     # ---- Creative: brand work for the concept sites (pair = the matching website case study)
-    dict(slug="xenro-brand", name="Xenro", type="creative", label="Concept · Brand identity", basis="Concept",
+    dict(slug="xenro-brand", name="Xenro", type="creative", thumb="thumb.jpg", label="Concept · Brand identity", basis="Concept",
          deliverables="Logo and identity system, color palette, fleet livery, signage, uniforms and merch, packaging, out-of-home, social, app icon",
          color="#D6D3CC", summary="A logistics brand built on one idea: forward motion. The arrow-and-X mark carries through everything, from trailer livery and hi-vis to billboards, social posts and the app icon.",
          images=[f"{i:02d}.jpg" for i in range(1, 12)]),
@@ -217,7 +217,10 @@ def card(p):
     if p.get("placeholder"):
         return (f'<div class="card" data-type="{p["type"]}"><div class="img">{img_block(p, 0, "New website example")}{tag}</div>'
                 f'<div class="cap"><b>{e(p["name"])}</b><span>{e(p["label"])}</span></div></div>')
-    return (f'<a class="card" href="project-{p["slug"]}.html" data-type="{p["type"]}"><div class="img">{img_block(p)}{tag}</div>'
+    t = p.get("thumb")
+    cover = (f'<img src="images/work/{p["slug"]}/{t}" alt="{e(p["name"])}" loading="lazy">'
+             if t and have(f"work/{p['slug']}/{t}") else img_block(p))
+    return (f'<a class="card" href="project-{p["slug"]}.html" data-type="{p["type"]}"><div class="img">{cover}{tag}</div>'
             f'<div class="cap"><b>{e(p["name"])}</b><span>{e(p["label"])}</span></div></a>')
 
 
