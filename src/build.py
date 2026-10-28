@@ -533,7 +533,7 @@ def project(p, i):
     return head(f"{p['name']} — DSPTCH Design", summary) + SPRITE + page_hero(
         "work.html", e(p["label"]), e(p["name"]), e(summary),
         f'<a class="btn or" href="{p["url"]}" target="_blank" rel="noopener">Visit the live site</a>' if p.get("url") else "") + f"""
-<section class="wrap sec tight cs-hero">
+<section class="wrap sec tight cs-hero {p['type']}"{f' style="--hero-pos:{p["hero_pos"]}"' if p.get("hero_pos") else ""}>
   <div class="img">{img_block(p, 0, "Cover image")}</div>
   <dl class="facts">
     <div><dt>Client</dt><dd>{e(p["name"])}</dd></div>
