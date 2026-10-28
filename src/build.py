@@ -38,6 +38,10 @@ PROJECTS = [
          deliverables="Logo and identity system, color palette, fleet livery, signage, uniforms and merch, packaging, out-of-home, social, app icon",
          color="#D6D3CC", summary="A logistics brand built on one idea: forward motion. The arrow-and-X mark carries through everything, from trailer livery and hi-vis to billboards, social posts and the app icon.",
          images=[f"{i:02d}.jpg" for i in range(1, 12)]),
+    dict(slug="alden-mercer-brand", name="Alden & Mercer", type="creative", label="Concept · Brand identity", basis="Concept",
+         deliverables="Monogram and wordmark, color palette, business cards, presentation folder, out-of-home, digital display, social",
+         color="#D6D3CC", summary="A business law brand built on composure: a precise AM monogram, a classic serif wordmark and a quiet navy-and-mint palette, carried from the business card to the subway platform.",
+         images=[f"{i:02d}.jpg" for i in range(1, 11)]),
     # ---- Creative: work carried over from the previous dsptchdesign.com (old WordPress slug in `old`)
     dict(slug='bloved', name='Bloved', type="creative", label='Identity · Packaging · Website', basis="Bespoke engagement", old='bloved', upl='2021/06',
          deliverables='Logo identity, style guide, packaging, website', color="#D6D3CC", summary='A refreshed identity for a cannabis wellness brand made for women: a relaxed, natural voice with an upbeat, energetic look.', images=['Bloved_Mockup.jpg', 'Bloved_Logo.jpg', 'Bloved_homepage-u.jpg', 'Bloved_Cans04.jpg', 'Bloved_Cans03.jpg', 'Bloved_Cans02.jpg', 'Bloved_Cans01.jpg', 'bloved_brand-guide_05.jpg', 'bloved_brand-guide_04.jpg', 'bloved_brand-guide_03.jpg', 'bloved_brand-guide_02.jpg', 'bloved_brand-guide_01.jpg']),
