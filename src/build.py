@@ -17,7 +17,7 @@ PROJECTS = [
     # ---- Websites: DSPTCH concept sites (live). Shown first; label marks them as concepts.
     dict(slug='xenro', name='Xenro', type="website", label="Concept · Logistics", basis="Concept", url='https://xenro.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
-         summary='A freight, storage and distribution site with a quick-quote form in the hero and a clear path from first pickup to final handoff.', images=[f"{i:02d}.jpg" for i in range(1, 7)], thumb="02.jpg"),
+         summary='A freight, storage and distribution site with a quick-quote form in the hero and a clear path from first pickup to final handoff.', images=[f"{i:02d}.jpg" for i in range(1, 7)], thumb="thumb.jpg"),
     dict(slug='alden-mercer', name='Alden & Mercer', thumb="thumb.jpg", type="website", label="Concept · Law", basis="Concept", url='https://alden-mercer.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A boutique business law firm site with an editorial serif voice, a practice-area guide and an insights section.', images=['01-cover.jpg', '02-home.jpg', '03-home-mid.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
