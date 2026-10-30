@@ -21,7 +21,7 @@ PROJECTS = [
     dict(slug='alden-mercer', name='Alden & Mercer', thumb="thumb.jpg", type="website", label="Concept · Law", basis="Concept", url='https://alden-mercer.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A boutique business law firm site with an editorial serif voice, a practice-area guide and an insights section.', images=['01-cover.jpg', '02-home.jpg', '03-home-mid.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
-    dict(slug='vela-aesthetics', name='VELA Aesthetics', type="website", label="Concept · Med spa", basis="Concept", url='https://vela-aesthetics.netlify.app',
+    dict(slug='vela-aesthetics', name='VELA Aesthetics', thumb="thumb.jpg", type="website", label="Concept · Med spa", basis="Concept", url='https://vela-aesthetics.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A New York med spa site built around a monumental wordmark, an editorial grid and calm, considered copy.', images=['01-cover.jpg', '02-home.jpg', '03-home-mid.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
     dict(slug='davyn', name='DAVYN', type="website", label="Concept · Dental", basis="Concept", url='https://davyn.netlify.app',
