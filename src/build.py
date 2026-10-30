@@ -23,7 +23,7 @@ PROJECTS = [
          summary='A boutique business law firm site with an editorial serif voice, a practice-area guide and an insights section.', images=['01-cover.jpg', '02-home.jpg', '03-home-mid.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
     dict(slug='vela-aesthetics', name='VELA Aesthetics', thumb="thumb.jpg", type="website", label="Concept · Med spa", basis="Concept", url='https://vela-aesthetics.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
-         summary='A New York med spa site built around a monumental wordmark, an editorial grid and calm, considered copy.', images=['01-cover.jpg', '02-home.jpg', '03-home-mid.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
+         summary='A New York med spa site built around a monumental wordmark, an editorial grid and calm, considered copy.', images=[f"{i:02d}.jpg" for i in range(1, 6)]),
     dict(slug='davyn', name='DAVYN', type="website", label="Concept · Dental", basis="Concept", url='https://davyn.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A boutique dental studio site with framed photography, frosted navigation and a consultation flow that puts nervous patients at ease.', images=['01-cover.jpg', '02-home.jpg', '03-home-mid.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
