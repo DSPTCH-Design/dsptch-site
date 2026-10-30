@@ -281,8 +281,7 @@ img{max-width:100%;display:block}
 .gal figure img{width:100%;height:auto}
 .gal .g-wide{grid-column:1/-1}
 @media (max-width:560px){.gal{grid-template-columns:1fr}}
-.gal .g-solo{grid-column:1/-1;width:calc(50% - 6px);justify-self:center}
-@media (max-width:560px){.gal .g-solo{width:100%}}
+.gal .g-solo{grid-column:1/-1}
 .card[data-type="website"] .img img{object-position:top}
 .cs-hero .img img{object-position:var(--hero-pos,center)}
 .cs-hero.website .img img{object-position:var(--hero-pos,top)}
@@ -294,3 +293,6 @@ img{max-width:100%;display:block}
 .pair:hover .btn{background:var(--ink)}
 @media (max-width:900px){.pair{grid-template-columns:1fr}}
 .card .img img.thumb{object-position:center}
+
+.cs-hero.full .img{aspect-ratio:auto}
+.cs-hero.full .img img{position:static;height:auto}

@@ -15,13 +15,13 @@ EMAIL = "hello@dsptchdesign.com"
 # images: list of filenames in images/work/<slug>/ (first is the cover). Empty = placeholder.
 PROJECTS = [
     # ---- Websites: DSPTCH concept sites (live). Shown first; label marks them as concepts.
-    dict(slug='xenro', name='Xenro', type="website", label="Concept · Logistics", basis="Concept", url='https://xenro.netlify.app',
+    dict(slug='xenro', name='Xenro', hero_full=True, type="website", label="Concept · Logistics", basis="Concept", url='https://xenro.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A freight, storage and distribution site with a quick-quote form in the hero and a clear path from first pickup to final handoff.', images=[f"{i:02d}.jpg" for i in range(1, 7)], thumb="thumb.jpg"),
     dict(slug='alden-mercer', name='Alden & Mercer', thumb="thumb.jpg", type="website", label="Concept · Law", basis="Concept", url='https://alden-mercer.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A boutique business law firm site with an editorial serif voice, a practice-area guide and an insights section.', images=['01-cover.jpg', '02-home.jpg', '03-home-mid.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
-    dict(slug='vela-aesthetics', name='VELA Aesthetics', thumb="thumb.jpg", type="website", label="Concept · Med spa", basis="Concept", url='https://vela-aesthetics.netlify.app',
+    dict(slug='vela-aesthetics', name='VELA Aesthetics', hero_full=True, thumb="thumb.jpg", type="website", label="Concept · Med spa", basis="Concept", url='https://vela-aesthetics.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A New York med spa site built around a monumental wordmark, an editorial grid and calm, considered copy.', images=[f"{i:02d}.jpg" for i in range(1, 6)]),
     dict(slug='davyn', name='DAVYN', type="website", label="Concept · Dental", basis="Concept", url='https://davyn.netlify.app',
@@ -533,7 +533,7 @@ def project(p, i):
     return head(f"{p['name']} — DSPTCH Design", summary) + SPRITE + page_hero(
         "work.html", e(p["label"]), e(p["name"]), e(summary),
         f'<a class="btn or" href="{p["url"]}" target="_blank" rel="noopener">Visit the live site</a>' if p.get("url") else "") + f"""
-<section class="wrap sec tight cs-hero {p['type']}"{f' style="--hero-pos:{p["hero_pos"]}"' if p.get("hero_pos") else ""}>
+<section class="wrap sec tight cs-hero {p['type']}{' full' if p.get('hero_full') else ''}"{f' style="--hero-pos:{p["hero_pos"]}"' if p.get("hero_pos") else ""}>
   <div class="img">{img_block(p, 0, "Cover image")}</div>
   <dl class="facts">
     <div><dt>Client</dt><dd>{e(p["name"])}</dd></div>
