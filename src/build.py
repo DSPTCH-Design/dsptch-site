@@ -30,9 +30,9 @@ PROJECTS = [
     dict(slug='arena', name='ARENA', hero_full=True, thumb="thumb.jpg", type="website", label="Concept · Men's health", basis="Concept", url='https://arena-health.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary="A physician-led men's health and longevity clinic site, with photography that carries charge and copy built on restraint.", images=[f"{i:02d}.jpg" for i in range(1, 7)]),
-    dict(slug='qubik', name='QUBIK', type="website", label="Concept · Engineering", basis="Concept", url='https://qubik-ae.netlify.app',
+    dict(slug='qubik', name='QUBIK', hero_full=True, thumb="thumb.jpg", no_pair=True, type="website", label="Concept · Engineering", basis="Concept", url='https://qubik-ae.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
-         summary='An architectural engineering firm site for commercial and industrial building: hard edges and photography-led layouts.', images=['01-cover.jpg', '02-home.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
+         summary='An architectural engineering firm site for commercial and industrial building: hard edges and photography-led layouts.', images=[f"{i:02d}.jpg" for i in range(1, 7)]),
     # ---- Creative: brand work for the concept sites (pair = the matching website case study)
     dict(slug="xenro-brand", name="Xenro", type="creative", thumb="thumb.jpg", label="Concept · Brand identity", basis="Concept",
          deliverables="Logo and identity system, color palette, fleet livery, signage, uniforms and merch, packaging, out-of-home, social, app icon",
@@ -481,7 +481,7 @@ def gallery(p):
         w, h = Image.open(HERE / "images" / "work" / p["slug"] / x).size
         info.append((x, w, h, h > w * 1.05))
     # keep tall images side by side: pair each tall image with the next tall one
-    talls = [i for i in info if i[3]]
+    talls = [] if p.get("no_pair") else [i for i in info if i[3]]
     order, used = [], set()
     for it in info:
         if it[0] in used: continue
