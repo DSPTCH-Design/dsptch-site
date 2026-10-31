@@ -27,7 +27,7 @@ PROJECTS = [
     dict(slug='davyn', name='DAVYN', hero_full=True, thumb="thumb.jpg", type="website", label="Concept · Dental", basis="Concept", url='https://davyn.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A boutique dental studio site with framed photography, frosted navigation and a consultation flow that puts nervous patients at ease.', images=[f"{i:02d}.jpg" for i in range(1, 7)]),
-    dict(slug='arena', name='ARENA', hero_full=True, thumb="thumb.jpg", type="website", label="Concept · Men's health", basis="Concept", url='https://arena-health.netlify.app',
+    dict(slug='arena', name='ARENA', no_pair=True, hero_full=True, thumb="thumb.jpg", type="website", label="Concept · Men's health", basis="Concept", url='https://arena-health.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary="A physician-led men's health and longevity clinic site, with photography that carries charge and copy built on restraint.", images=[f"{i:02d}.jpg" for i in range(1, 7)]),
     dict(slug='qubik', name='QUBIK', hero_full=True, thumb="thumb.jpg", no_pair=True, type="website", label="Concept · Engineering", basis="Concept", url='https://qubik-ae.netlify.app',
