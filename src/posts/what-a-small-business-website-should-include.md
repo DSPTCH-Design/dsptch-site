@@ -1,9 +1,9 @@
 ---
 title: "What should a small business website include?"
 slug: what-a-small-business-website-should-include
-date: 2026-10-20
+date: 2026-09-17
+image: what-a-small-business-website-should-include.jpg
 category: Websites
-status: draft
 excerpt: "The pages, features and foundations every small business website needs, and what you can safely leave out."
 answer: "A strong small business website needs a clear homepage, a page for each core service, proof of your work, an about page, an easy way to get in touch, and solid technical foundations: fast loading, mobile-friendly layouts, page titles and descriptions, and a working contact form."
 faq:

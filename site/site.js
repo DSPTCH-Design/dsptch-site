@@ -36,7 +36,7 @@
   var src = document.getElementById("source");
   if (src) src.value = [q.utm_source, q.utm_medium, q.utm_campaign].filter(Boolean).join(" / ") || document.referrer || "direct";
   var pkg = document.getElementById("package");
-  if (pkg && q.package) pkg.value = q.package;
+  if (pkg && (q.package || q.plan)) pkg.value = q.package || q.plan;
 
   // Start form: show the right questions for the chosen intent
   var form = document.querySelector("[data-intent-form]");

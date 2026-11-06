@@ -296,3 +296,16 @@ img{max-width:100%;display:block}
 
 .cs-hero.full .img{aspect-ratio:auto}
 .cs-hero.full .img img{position:static;height:auto}
+.top.plain{background:#000}
+.field select{appearance:none;-webkit-appearance:none;padding-right:48px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230E0E0E' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;background-size:12px 8px}
+.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;background:var(--card);border-radius:var(--r);padding:clamp(24px,4vw,48px);border-left:4px solid var(--accent)}
+.intro > div{display:flex;flex-direction:column;gap:14px;max-width:60ch}
+.intro .pm{font-weight:500}
+.bgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px);row-gap:clamp(36px,4vw,56px)}
+.bcard{display:flex;flex-direction:column;gap:12px;text-decoration:none;min-width:0}
+.bcard .img{aspect-ratio:4/3}
+.bcard .btitle{font-size:clamp(20px,1.8vw,26px)}
+.bcard:hover .btitle{color:var(--accent)}
+.art-cover .img{aspect-ratio:16/9}
+@media (max-width:1000px){.bgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.bgrid{grid-template-columns:1fr}}

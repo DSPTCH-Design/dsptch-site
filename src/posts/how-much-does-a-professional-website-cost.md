@@ -1,9 +1,9 @@
 ---
 title: "How much does a professionally designed website cost?"
 slug: how-much-does-a-professional-website-cost
-date: 2026-10-13
+date: 2026-09-24
+image: how-much-does-a-professional-website-cost.jpg
 category: Websites
-status: draft
 excerpt: "What drives the price of a website, where the money goes, and how fixed-scope packages make the cost predictable."
 answer: "The cost of a professionally designed website depends mainly on page count, how much design customization you need, who writes the content, and any special functionality. At DSPTCH, fixed-scope website packages start at $3,500 for up to five pages, with larger packages at $5,500 and $9,500."
 faq:
@@ -38,6 +38,8 @@ Our website packages work this way:
 - **Refresh, $3,500:** up to 5 pages, one established design direction, a contact form and one revision round.
 - **Elevate, $5,500:** up to 10 pages, a more refined design treatment, light copy editing, core technical SEO setup and two revision rounds.
 - **Accelerate, $9,500:** up to 15 pages, a messaging workshop, selected copywriting, additional customization, analytics and a search-readiness review.
+
+Want to update your own text and images after launch? Content Editing can be added to any package for a one-time $499.
 
 Final scope is always confirmed before work begins.
 

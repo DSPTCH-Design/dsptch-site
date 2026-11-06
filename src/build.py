@@ -18,9 +18,9 @@ PROJECTS = [
     dict(slug='xenro', name='Xenro', hero_full=True, type="website", label="Concept · Logistics", basis="Concept", url='https://xenro.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A freight, storage and distribution site with a quick-quote form in the hero and a clear path from first pickup to final handoff.', images=[f"{i:02d}.jpg" for i in range(1, 7)], thumb="thumb.jpg"),
-    dict(slug='alden-mercer', name='Alden & Mercer', thumb="thumb.jpg", type="website", label="Concept · Law", basis="Concept", url='https://alden-mercer.netlify.app',
+    dict(slug='alden-mercer', name='Alden & Mercer', hero_full=True, no_pair=True, thumb="thumb.jpg", type="website", label="Concept · Law", basis="Concept", url='https://alden-mercer.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
-         summary='A boutique business law firm site with an editorial serif voice, a practice-area guide and an insights section.', images=['01-cover.jpg', '02-home.jpg', '03-home-mid.jpg', '04-page.jpg', '05-page.jpg', '06-page.jpg', '07-mobile.jpg', '08-mobile.jpg']),
+         summary='A boutique business law firm site with an editorial serif voice, a practice-area guide and an insights section.', images=[f"{i:02d}.jpg" for i in range(1, 9)]),
     dict(slug='vela-aesthetics', name='VELA Aesthetics', hero_full=True, thumb="thumb.jpg", type="website", label="Concept · Med spa", basis="Concept", url='https://vela-aesthetics.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A New York med spa site built around a monumental wordmark, an editorial grid and calm, considered copy.', images=[f"{i:02d}.jpg" for i in range(1, 6)]),
@@ -168,11 +168,11 @@ def nav(active="", minimal=False):
     </nav>"""
 
 
-def page_hero(active, eyebrow, h1, sub=None, ctas="", extra=""):
+def page_hero(active, eyebrow, h1, sub=None, ctas="", extra="", plain=False):
     bot = ""
     if sub or ctas:
         bot = f'<div class="hero-bot">{f"<p>{sub}</p>" if sub else ""}{f"<div class=ctas>{ctas}</div>" if ctas else ""}</div>'
-    return f"""<div class="top">
+    return f"""<div class="top{' plain' if plain else ''}">
   <div class="wrap">
     {nav(active)}
     <header class="phero">
@@ -258,7 +258,7 @@ def faq(items):
 
 FAQ = {
     "own": ("Who owns the finished site?", "You own the agreed website assets and your domain. Hosting, third-party licenses and code handoff terms are defined in your agreement."),
-    "edit": ("Can we update the website ourselves?", "Editing options depend on the build and content setup. We explain the handoff before development starts, so you know exactly how updates will work."),
+    "edit": ("Can we update the website ourselves?", "Yes. Add our Content Editing setup for a one-time $499. We connect a simple editor to the parts of the site you'll change most, like text, images, team members and blog posts, and walk you through it. The layout and design stay protected, so nothing breaks. Prefer to hand it off? Ask about ongoing support instead."),
     "content": ("What happens to our current content?", "We review it with you during scoping. Packages assume client-approved copy; extensive content migration is scoped separately."),
     "pages": ("What if we need additional pages?", "Additional pages and functionality are scoped and priced separately, before any work on them begins."),
     "rank": ("Will my site rank in Google or AI search?", "We build on sound technical foundations, but no provider can guarantee rankings or AI recommendations."),
@@ -422,6 +422,13 @@ def packages():
     </div>
   </div>
   <div class="split">
+    <span class="dot">Add-on</span>
+    <div class="body">
+      <h2 class="h2s">Content Editing, $499.</h2>
+      <p class="lede mute">Update your own text, images, team and blog posts through a simple editor. We set it up, protect the design and show you how it works. One-time fee, added to any package.</p>
+    </div>
+  </div>
+  <div class="split">
     <span class="dot">Timing</span>
     <div class="body">
       <h2 class="h2s">Your schedule starts when your content does.</h2>
@@ -548,7 +555,7 @@ def project(p, i):
         return f'<div class="split"><span class="dot">{title}</span><div class="body">{body}</div></div>'
     return head(f"{p['name']} — DSPTCH Design", summary) + SPRITE + page_hero(
         "work.html", e(p["label"]), e(p["name"]), e(summary),
-        f'<a class="btn or" href="{p["url"]}" target="_blank" rel="noopener">Visit the live site</a>' if p.get("url") else "") + f"""
+        f'<a class="btn ghost" href="{p["url"]}" target="_blank" rel="noopener">Visit the live site</a>' if p.get("url") else "") + f"""
 <section class="wrap sec tight cs-hero {p['type']}{' full' if p.get('hero_full') else ''}"{f' style="--hero-pos:{p["hero_pos"]}"' if p.get("hero_pos") else ""}>
   <div class="img">{img_block(p, 0, "Cover image")}</div>
   <dl class="facts">
@@ -575,10 +582,24 @@ def project(p, i):
 
 # ---------------------------------------------------------------- design support
 def creative_examples():
-    picks = [p for p in PROJECTS if p["slug"] in ("xenro-brand", "bloved", "vitalitea")]
+    picks = [p for p in PROJECTS if p["slug"] in ("xenro-brand", "alden-mercer-brand", "vela-brand")]
     return f"""<section class="wrap sec" style="padding-top:0">
   <div class="head"><h2>Creative work</h2><a class="btn ghost" href="work.html#creative">See all creative</a></div>
   <div class="grid">{"".join(card(p) for p in picks)}</div>
+</section>
+"""
+
+
+INTRO_MONTH = """<section class="wrap sec tight">
+  <div class="intro">
+    <div>
+      <span class="dot">Try it first</span>
+      <h2 class="h2s">Intro Month, $2,500.</h2>
+      <p class="lede mute">One month of design support with a scope we agree on up front. See how we work, how fast we turn requests around and how it fits your team, then choose a plan.</p>
+      <p class="pm">Project management is included in every scope.</p>
+    </div>
+    <a class="btn or" href="start.html?intent=design&plan=intro">Start an Intro Month</a>
+  </div>
 </section>
 """
 
@@ -620,6 +641,7 @@ def design_support():
   </ol>
 </section>
 
+""" + INTRO_MONTH + """
 <section class="wrap">
   <div class="note">
     <span class="dot">Already launched with DSPTCH?</span>
@@ -638,16 +660,17 @@ def design_plans():
         cls = "btn or" if i == 1 else "btn ghost"
         cards.append(f'<article class="pkc{" hl" if i == 1 else ""}"><div class="t"><h3>{p["name"]}</h3><span>{p["hours"]}</span></div>'
                      f'<div class="price">{p["price"]}<small>/ month</small></div><p class="sum">{p["summary"]}</p>'
-                     f'<ul><li>{p["hours"].replace(" / month", "")} of design capacity</li><li>Prioritized request queue</li><li>Production-ready files</li></ul>'
+                     f'<ul><li>{p["hours"].replace(" / month", "")} of design capacity</li><li>Project management included</li><li>Prioritized request queue</li><li>Production-ready files</li></ul>'
                      f'<a class="{cls}" href="start.html?intent=design&plan={p["name"].lower()}">{p["cta"]}</a></article>')
     return head("Design Plans — DSPTCH Design", "Monthly design support plans: Starter, Growth and Pro.") + SPRITE + page_hero(
         "design-support.html", "Design Plans", "Creative support that fits <span>your workload.</span>",
         "Choose the amount of ongoing design capacity your business needs.") + f"""
 <section class="wrap sec">
   <div class="pk">{"".join(cards)}</div>
-  <p class="fine">Plan details are confirmed during your consultation, including monthly hours, request queue, simultaneous tasks, turnaround targets, unused hours, revisions, cancellation, file ownership and exclusions.</p>
+  <p class="fine">Project management is included in every plan. Plan details are confirmed during your consultation, including monthly hours, request queue, simultaneous tasks, turnaround targets, unused hours, revisions, cancellation, file ownership and exclusions.</p>
 </section>
 
+{INTRO_MONTH}
 {footer("Less juggling. Better design.", ("start.html?intent=design", "Discuss a Plan"))}""" + tail()
 
 
@@ -713,7 +736,7 @@ def field(id_, label, kind="input", type_="text", req=False, full=False, options
 def start():
     return head("Start a Project — DSPTCH Design", "Tell us what you're building and we'll recommend the right next step.") + SPRITE + page_hero(
         "", "Start a Project", "Tell us what <span>you're building.</span>",
-        "A few details will help us recommend the right next step.") + f"""
+        "A few details will help us recommend the right next step.", plain=True) + f"""
 <section class="wrap sec">
   <form class="form" name="start" method="POST" action="thanks.html" data-netlify="true" netlify-honeypot="company-website" data-intent-form>
     <input type="hidden" name="form-name" value="start">
@@ -844,30 +867,117 @@ def offer():
 
 
 # ---------------------------------------------------------------- legal + 404
+LEGAL_UPDATED = "November 6, 2026"
+
+PRIVACY = """
+<p class="mute">Last updated """ + LEGAL_UPDATED + """</p>
+<p>This policy explains what information DSPTCH Design ("DSPTCH," "we," "us") collects when you visit dsptchdesign.com or contact us through it, how we use that information and the choices you have.</p>
+
+<h2>Information you give us</h2>
+<p>When you fill out a form on this site, such as Start a Project or a website inquiry, we collect the details you choose to share. That may include:</p>
+<ul>
+<li>Your name and work email address</li>
+<li>Your company, current website and type of business</li>
+<li>Project details such as page count, timing, budget range and the kind of design work you need</li>
+<li>Anything else you write in a message field</li>
+</ul>
+<p>If you email us directly, we receive your email address and whatever you include in your message.</p>
+
+<h2>Information collected automatically</h2>
+<p>Like most websites, our hosting provider automatically records basic technical information when you visit, such as your IP address, browser type, the pages you request and the time of your visit. This is used to keep the site running, secure and fast.</p>
+<p>When you arrive from an ad or a link with tracking tags, the Start a Project form may record that source (for example, the campaign name) along with your submission, so we know which channels bring people to us.</p>
+<p>This site does not currently use advertising cookies or third-party analytics. If we add analytics in the future, we will update this policy first.</p>
+
+<h2>How we use your information</h2>
+<ul>
+<li>To respond to your inquiry and recommend a next step</li>
+<li>To prepare proposals and deliver services you engage us for</li>
+<li>To keep records of our conversations and agreements</li>
+<li>To understand which pages and channels are working, in aggregate</li>
+<li>To protect the site against spam and abuse</li>
+</ul>
+<p>We do not sell your personal information, and we do not share it for other companies' marketing.</p>
+
+<h2>Service providers we rely on</h2>
+<p>We use a small number of trusted providers to run this website:</p>
+<ul>
+<li><strong>Netlify</strong> hosts the website and processes form submissions on our behalf.</li>
+<li><strong>Google Fonts</strong> delivers the typeface used on the site. Your browser requests the font files from Google, which receives your IP address as part of that request.</li>
+<li><strong>Email and business tools</strong> we use to communicate with you and manage projects.</li>
+</ul>
+<p>These providers may only use your information to provide their services to us.</p>
+
+<h2>How long we keep information</h2>
+<p>We keep inquiry details for as long as needed to respond and to follow up on a potential project, and project records for as long as needed for the engagement and our legal and accounting obligations. You can ask us to delete your inquiry at any time.</p>
+
+<h2>Your choices</h2>
+<p>You can ask to see, correct or delete the personal information we hold about you, or ask us to stop contacting you. Email us and we will respond within a reasonable time. Depending on where you live, you may have additional rights under local privacy laws.</p>
+
+<h2>Security</h2>
+<p>The site is served over an encrypted connection, and we limit access to inquiry information to the people who need it. No method of transmission or storage is completely secure, so please don't send sensitive information such as passwords or financial details through our forms.</p>
+
+<h2>Children</h2>
+<p>This site is intended for businesses and is not directed to children under 13. We do not knowingly collect information from children.</p>
+
+<h2>Changes to this policy</h2>
+<p>We may update this policy as our site or services change. The date at the top shows when it was last revised.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy or your information: <span class="mail">""" + EMAIL + """</span></p>
+"""
+
+TERMS = """
+<p class="mute">Last updated """ + LEGAL_UPDATED + """</p>
+<p>These terms govern your use of dsptchdesign.com (the "site"), operated by DSPTCH Design ("DSPTCH," "we," "us"). By using the site, you agree to them. If you don't agree, please don't use the site.</p>
+
+<h2>Project work is covered separately</h2>
+<p>These terms cover the website only. Any design, website or support work we do for you is governed by a separate written proposal or agreement, which sets out the scope, price, timeline, revisions, ownership and payment terms for that engagement. If that agreement conflicts with these terms, the agreement wins.</p>
+
+<h2>Pricing and packages</h2>
+<p>Prices, packages and plans shown on the site describe our standard offers. They are not a binding offer or contract. Final scope, price and timeline are confirmed in writing before work begins, and we may update our pricing at any time. Delivery timelines depend on receiving content, access and approvals.</p>
+
+<h2>Submitting an inquiry</h2>
+<p>Submitting a form does not create a client relationship or reserve a start or launch date. Please make sure the information you send is accurate and that you have the right to share it.</p>
+
+<h2>Our work and content</h2>
+<p>The design, text, graphics, logos and other content on this site belong to DSPTCH Design or are used with permission. You may view and share links to the site for personal and business reference. You may not copy, reproduce, resell or use our content, designs or case studies for other purposes without written permission.</p>
+<p>Client names, logos and project images remain the property of their owners and are shown with permission.</p>
+
+<h2>Concept work</h2>
+<p>Some projects in our portfolio are concepts created by DSPTCH Design to demonstrate our approach. The businesses, people and details shown in concept projects are fictional, and any resemblance to real organizations is unintended.</p>
+
+<h2>Articles and guidance</h2>
+<p>Blog articles and other information on the site are general guidance, not professional, legal or financial advice for your specific situation. We can't guarantee search rankings, AI recommendations, traffic or business results.</p>
+
+<h2>Links to other sites</h2>
+<p>The site may link to other websites, including live sites we designed. We aren't responsible for their content or practices.</p>
+
+<h2>Acceptable use</h2>
+<p>Please don't misuse the site. That includes attempting to disrupt it, gain unauthorized access, submit spam or malicious code through forms, or scrape content at scale.</p>
+
+<h2>No warranties</h2>
+<p>The site is provided "as is." We work to keep it accurate and available, but we don't promise it will always be error-free, complete or uninterrupted.</p>
+
+<h2>Limitation of liability</h2>
+<p>To the extent the law allows, DSPTCH Design is not liable for indirect, incidental or consequential damages arising from your use of the site.</p>
+
+<h2>Governing law</h2>
+<p>These terms are governed by the laws of the State of Illinois, without regard to conflict-of-law rules.</p>
+
+<h2>Changes</h2>
+<p>We may update these terms from time to time. The date at the top shows when they were last revised, and continued use of the site means you accept the current version.</p>
+
+<h2>Contact</h2>
+<p><span class="mail">""" + EMAIL + """</span></p>
+"""
+
+
 def legal(kind):
     if kind == "privacy":
-        t, h1, body = "Privacy Policy", "Privacy <span>policy.</span>", """
-<p><span class="ph-note">Draft — requires legal review before launch</span></p>
-<p>This policy explains what information DSPTCH Design collects through this website and how it is used.</p>
-<h2>Information you give us</h2>
-<p>When you submit a form, we collect the details you enter, such as your name, email address, website and project information. We use it only to respond to your inquiry and provide our services.</p>
-<h2>Form handling and hosting</h2>
-<p>This site is hosted on Netlify, which processes form submissions on our behalf.</p>
-<h2>Analytics and cookies</h2>
-<p>Describe any analytics or cookies in use once they are selected.</p>
-<h2>Contact</h2>
-<p>Questions about this policy: <span class="mail">""" + EMAIL + "</span></p>"
+        t, h1, body = "Privacy Policy", "Privacy <span>policy.</span>", PRIVACY
     else:
-        t, h1, body = "Terms of Use", "Terms <span>of use.</span>", """
-<p><span class="ph-note">Draft — requires legal review before launch</span></p>
-<p>These terms govern your use of this website. Project work is governed by the separate agreement signed for each engagement.</p>
-<h2>Website content</h2>
-<p>Content on this site, including project imagery, belongs to DSPTCH Design or its clients and is shown with permission.</p>
-<h2>Pricing</h2>
-<p>Prices shown are starting points. Final scope and price are confirmed in writing before work begins.</p>
-<h2>Contact</h2>
-<p><span class="mail">""" + EMAIL + "</span></p>"
-    return head(f"{t} — DSPTCH Design", t) + SPRITE + page_hero("", "Legal", h1) + f"""
+        t, h1, body = "Terms of Use", "Terms <span>of use.</span>", TERMS
+    return head(f"{t} — DSPTCH Design", t) + SPRITE + page_hero("", "Legal", h1, plain=True) + f"""
 <section class="wrap sec"><div class="prose">{body}</div></section>
 {footer(show_close=False)}""" + tail()
 
@@ -918,11 +1028,11 @@ def blog_cover(p, big=False):
 
 def blog_index():
     lead, rest = POSTS[0], POSTS[1:]
-    rows = "".join(f"""<a class="brow" href="blog-{p['slug']}.html">
-      <span class="bmeta">{fdate(p['date'])}</span>
+    rows = "".join(f"""<a class="bcard" href="blog-{p['slug']}.html">
+      {blog_cover(p)}
+      <span class="bmeta">{p['category']} · {fdate(p['date'])} · {p['mins']} min {draft_chip(p)}</span>
       <span class="btitle">{e(p['title'])}</span>
       <span class="bex">{e(p['excerpt'])}</span>
-      <span class="bmeta">{p['category']} · {p['mins']} min {draft_chip(p)}</span>
     </a>""" for p in rest)
     return head("Blog — DSPTCH Design", "Notes on websites, design and visibility from DSPTCH Design.") + SPRITE + page_hero(
         "", "Blog", "Notes on websites, <span>design and visibility.</span>",
@@ -940,10 +1050,8 @@ def blog_index():
 </section>
 
 <section class="wrap">
-  <div class="split">
-    <span class="dot">All articles</span>
-    <div class="blist">{rows}</div>
-  </div>
+  <div class="head"><h2 class="h2s">All articles</h2><span class="dot">{len(POSTS)} articles</span></div>
+  <div class="bgrid">{rows}</div>
 </section>
 <div class="sec tight"></div>
 
@@ -984,6 +1092,7 @@ def blog_post(p):
     {draft_chip(p)}
   </div>
   <div class="art-body">
+    <div class="art-cover">{blog_cover(p)}</div>
     <div class="answer"><span class="dot">Short answer</span><p>{e(p.get('answer', ''))}</p></div>
     <div class="prose art-prose">{p['html']}</div>
     {('<h2 class="art-faq-h">Frequently asked questions</h2>' + faq([(f['q'], f['a']) for f in faq_items])) if faq_items else ''}

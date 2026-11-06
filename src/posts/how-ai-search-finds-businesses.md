@@ -1,9 +1,9 @@
 ---
 title: "How do AI search tools find and describe businesses?"
 slug: how-ai-search-finds-businesses
-date: 2026-10-06
+date: 2026-09-10
+image: how-ai-search-finds-businesses.jpg
 category: Visibility
-status: draft
 excerpt: "What AI assistants look for when they answer questions about businesses like yours, and practical steps to make your site easier to understand."
 answer: "AI search tools draw on content they can access and interpret, including your website. Clear pages that directly answer common customer questions, accurate business details, structured information and a consistent presence across the web make your business easier for these tools to understand and describe. No one can guarantee that an AI tool will recommend a specific business."
 faq:
