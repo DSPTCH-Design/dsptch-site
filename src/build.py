@@ -168,11 +168,16 @@ def nav(active="", minimal=False):
     </nav>"""
 
 
-def page_hero(active, eyebrow, h1, sub=None, ctas="", extra="", plain=False):
+def page_hero(active, eyebrow, h1, sub=None, ctas="", extra="", plain=False, video=None):
     bot = ""
     if sub or ctas:
         bot = f'<div class="hero-bot">{f"<p>{sub}</p>" if sub else ""}{f"<div class=ctas>{ctas}</div>" if ctas else ""}</div>'
-    return f"""<div class="top{' plain' if plain else ''}">
+    vid = ""
+    if video:
+        vid = (f'<video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/video/{video}.jpg" aria-hidden="true">'
+               f'<source src="images/video/{video}.mp4" type="video/mp4"></video><div class="hero-shade" aria-hidden="true"></div>')
+    return f"""<div class="top{' plain' if plain else ''}{' has-video' if video else ''}">
+  {vid}
   <div class="wrap">
     {nav(active)}
     <header class="phero">
@@ -678,7 +683,7 @@ def design_plans():
 def about():
     return head("About — DSPTCH Design", "A sharper way to work: experienced creative thinking, modern tools and a simpler process.") + SPRITE + page_hero(
         "about.html", "About", "A sharper way <span>to work.</span>",
-        "DSPTCH combines experienced creative thinking, modern tools and a simpler way to get excellent work made.") + """
+        "DSPTCH combines experienced creative thinking, modern tools and a simpler way to get excellent work made.", video="about-hero") + """
 <section class="wrap sec">
   <div class="split">
     <span class="dot">Philosophy</span>
