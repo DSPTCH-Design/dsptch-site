@@ -21,9 +21,6 @@ PROJECTS = [
     dict(slug='xenro', name='Xenro', hero_full=True, type="website", label="Concept · Logistics", basis="Concept", url='https://xenro.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A freight, storage and distribution site with a quick-quote form in the hero and a clear path from first pickup to final handoff.', images=[f"{i:02d}.jpg" for i in range(1, 7)], thumb="thumb.jpg"),
-    dict(slug='alden-mercer', name='Alden & Mercer', hero_full=True, no_pair=True, thumb="thumb.jpg", type="website", label="Concept · Law", basis="Concept", url='https://alden-mercer.netlify.app',
-         deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
-         summary='A boutique business law firm site with an editorial serif voice, a practice-area guide and an insights section.', images=[f"{i:02d}.jpg" for i in range(1, 9)]),
     dict(slug='vela-aesthetics', name='VELA Aesthetics', hero_full=True, thumb="thumb.jpg", type="website", label="Concept · Med spa", basis="Concept", url='https://vela-aesthetics.netlify.app',
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='A New York med spa site built around a monumental wordmark, an editorial grid and calm, considered copy.', images=[f"{i:02d}.jpg" for i in range(1, 6)]),
@@ -37,14 +34,14 @@ PROJECTS = [
          deliverables="Brand identity, copy, website design and build", color="#D9D5CF", featured=True,
          summary='An architectural engineering firm site for commercial and industrial building: hard edges and photography-led layouts.', images=[f"{i:02d}.jpg" for i in range(1, 7)]),
     # ---- Creative: brand work for the concept sites (pair = the matching website case study)
-    dict(slug="alden-mercer-brand", name="Alden & Mercer", type="creative", label="Concept · Brand identity", basis="Concept",
-         deliverables="Monogram and wordmark, color palette, business cards, presentation folder, out-of-home, digital display, social",
-         color="#D6D3CC", summary="A business law brand built on composure: a precise AM monogram, a classic serif wordmark and a quiet navy-and-mint palette, carried from the business card to the subway platform.",
-         images=[f"{i:02d}.jpg" for i in range(1, 11)]),
     dict(slug="xenro-brand", name="Xenro", type="creative", thumb="thumb.jpg", label="Concept · Brand identity", basis="Concept",
          deliverables="Logo and identity system, color palette, fleet livery, signage, uniforms and merch, packaging, out-of-home, social, app icon",
          color="#D6D3CC", summary="A logistics brand built on one idea: forward motion. The arrow-and-X mark carries through everything, from trailer livery and hi-vis to billboards, social posts and the app icon.",
          images=[f"{i:02d}.jpg" for i in range(1, 12)]),
+    dict(slug="alden-mercer-brand", name="Alden & Mercer", type="creative", label="Concept · Brand identity", basis="Concept",
+         deliverables="Monogram and wordmark, color palette, business cards, presentation folder, out-of-home, digital display, social",
+         color="#D6D3CC", summary="A business law brand built on composure: a precise AM monogram, a classic serif wordmark and a quiet navy-and-mint palette, carried from the business card to the subway platform.",
+         images=[f"{i:02d}.jpg" for i in range(1, 11)]),
     dict(slug="vela-brand", name="VELA", type="creative", label="Concept · Brand identity", basis="Concept",
          deliverables="Monogram and wordmark, color palette, signage, stationery, uniforms, packaging and totes, posters, social",
          color="#D6D3CC", summary="A New York med spa brand built on restraint: a fine-line VA monogram, a wide-set wordmark and a deep green and olive palette, carried from the front door to the treatment room.",
@@ -582,7 +579,7 @@ def project(p, i):
 
 # ---------------------------------------------------------------- design support
 def creative_examples():
-    picks = [p for p in PROJECTS if p["slug"] in ("alden-mercer-brand", "xenro-brand", "vela-brand")]
+    picks = [p for p in PROJECTS if p["slug"] in ("xenro-brand", "alden-mercer-brand", "vela-brand")]
     return f"""<section class="wrap sec" style="padding-top:0">
   <div class="head"><h2>Creative work</h2><a class="btn ghost" href="work.html#creative">See all creative</a></div>
   <div class="grid">{"".join(card(p) for p in picks)}</div>
