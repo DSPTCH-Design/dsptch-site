@@ -160,7 +160,7 @@ def nav(active="", minimal=False):
     </nav>"""
 
 
-def page_hero(active, eyebrow, h1, sub=None, ctas="", extra="", plain=False, video=None):
+def page_hero(active, eyebrow, h1, sub=None, ctas="", extra="", plain=False, video=None, bg=None):
     bot = ""
     if sub or ctas:
         bot = f'<div class="hero-bot">{f"<p>{sub}</p>" if sub else ""}{f"<div class=ctas>{ctas}</div>" if ctas else ""}</div>'
@@ -168,7 +168,10 @@ def page_hero(active, eyebrow, h1, sub=None, ctas="", extra="", plain=False, vid
     if video:
         vid = (f'<video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/video/{video}.jpg" aria-hidden="true">'
                f'<source src="images/video/{video}.mp4" type="video/mp4"></video><div class="hero-shade" aria-hidden="true"></div>')
-    return f"""<div class="top{' plain' if plain else ''}{' has-video' if video else ''}">
+    if bg:
+        vid += '<div class="hero-shade" aria-hidden="true"></div>'
+    style = f' style="background-image:url(\'{bg}\')"' if bg else ""
+    return f"""<div class="top{' plain' if plain else ''}{' has-video' if video else ''}{' has-bg' if bg else ''}"{style}>
   {vid}
   <div class="wrap">
     {nav(active)}
@@ -552,7 +555,8 @@ def project(p, i):
         return f'<div class="split"><span class="dot">{title}</span><div class="body">{body}</div></div>'
     return head(f"{p['name']} — DSPTCH Design", summary) + SPRITE + page_hero(
         "work.html", e(p["label"]), e(p["name"]), e(summary),
-        f'<a class="btn ghost" href="{p["url"]}" target="_blank" rel="noopener">Visit the live site</a>' if p.get("url") else "") + f"""
+        f'<a class="btn ghost" href="{p["url"]}" target="_blank" rel="noopener">Visit the live site</a>' if p.get("url") else "",
+        bg=f"images/work/{p['slug']}/bg.jpg" if have(f"work/{p['slug']}/bg.jpg") else None) + f"""
 <section class="wrap sec tight cs-hero {p['type']}{' full' if p.get('hero_full') else ''}"{f' style="--hero-pos:{p["hero_pos"]}"' if p.get("hero_pos") else ""}>
   <div class="img">{img_block(p, 0, "Cover image")}</div>
   <dl class="facts">
