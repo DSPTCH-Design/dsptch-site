@@ -321,3 +321,4 @@ img{max-width:100%;display:block}
 @media (prefers-reduced-motion:reduce){.hero-video{display:none}.top.has-video{background:#000 url("images/video/about-hero.jpg") center/cover no-repeat}}
 .top.has-bg{background-color:#000;background-position:center;background-size:cover;background-repeat:no-repeat}
 .top.has-bg .hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 65%),linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.6) 45%,rgba(0,0,0,.8) 100%)}
+.form input:user-invalid,.form select:user-invalid,.form textarea:user-invalid{border-color:#D93025;box-shadow:0 0 0 1px #D93025}

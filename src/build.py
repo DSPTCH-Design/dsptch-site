@@ -728,7 +728,10 @@ def field(id_, label, kind="input", type_="text", req=False, full=False, options
     elif kind == "textarea":
         ctl = f'<textarea id="{id_}" name="{id_}" placeholder="{ph}"{r}></textarea>'
     else:
-        ctl = f'<input id="{id_}" name="{id_}" type="{type_}" placeholder="{ph}"{r}>'
+        extra = ""
+        if type_ == "url":  # plain text so "yourbusiness.com" is accepted without https://
+            type_, extra = "text", ' inputmode="url" autocomplete="url"'
+        ctl = f'<input id="{id_}" name="{id_}" type="{type_}" placeholder="{ph}"{extra}{r}>'
     return f'<div class="field{" full" if full else ""}"><label for="{id_}">{label}{" *" if req else ""}</label>{ctl}</div>'
 
 
@@ -755,7 +758,7 @@ def start():
     <fieldset class="fs" data-for="website unsure">
       <legend>About your website<small>Approximate answers are fine.</small></legend>
       <div class="fgrid">
-        {field("current-url", "Current website", type_="url", ph="https://")}
+        {field("current-url", "Current website", type_="url", ph="yourbusiness.com")}
         {field("business-type", "Type of business")}
         {field("project-type", "New site or redesign", "select", options=["New website", "Redesign", "Not sure"])}
         {field("page-count", "Approximate page count", "select", options=["1–5", "6–10", "11–15", "More than 15", "Not sure"])}
