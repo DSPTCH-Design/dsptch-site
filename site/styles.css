@@ -322,3 +322,43 @@ img{max-width:100%;display:block}
 .top.has-bg{background-color:#000;background-position:center;background-size:cover;background-repeat:no-repeat}
 .top.has-bg .hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 65%),linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.6) 45%,rgba(0,0,0,.8) 100%)}
 .form input:user-invalid,.form select:user-invalid,.form textarea:user-invalid{border-color:#D93025;box-shadow:0 0 0 1px #D93025}
+
+/* ---------------------------------------------------------------- free homepage landing page */
+.h2s .mute,.head h2 .mute{color:var(--mute)}
+.dark .h2s .mute{color:var(--dark-mute)}
+.claim-intro{display:flex;flex-direction:column;gap:18px;position:sticky;top:32px}
+.claim-intro h2{font-size:clamp(36px,4.4vw,64px);line-height:1;letter-spacing:-.05em;font-weight:500}
+.claim-intro p{max-width:34ch}
+.steps-form{background:var(--card);border-radius:var(--r);padding:clamp(22px,3.4vw,48px);gap:28px;max-width:none}
+.steps-form .fs{gap:22px}
+.steps-form .fs legend{margin-bottom:6px}
+.steps-form .fs legend small{margin:0 0 8px;font-size:13px;letter-spacing:.02em;color:var(--accent)}
+.progress{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.progress i{height:3px;background:var(--line);border-radius:3px;transition:background .3s}
+.progress i.on{background:var(--accent)}
+.qlabel{font-size:14px;font-weight:500}
+.choice.chips{gap:8px}
+.choice.chips label{padding:14px 16px;gap:2px;background:var(--bg);border-color:transparent}
+.choice.chips label b{font-size:15px;letter-spacing:-.01em}
+.choice.chips label span{font-size:12px}
+.choice.chips label:has(input:checked){background:var(--card)}
+.choice.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.choice.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.choice.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.choice.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.check{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--mute);cursor:pointer;font-weight:400}
+.check input{width:18px;height:18px;accent-color:var(--ink)}
+.field input:disabled{opacity:.45}
+.step-err{font-size:14px;color:#C2410C}
+.steps-form [hidden]{display:none!important}
+.head .lp-lead{font-size:clamp(28px,3.4vw,48px);line-height:1.08;letter-spacing:-.045em;font-weight:500;max-width:22ch}
+.steps-form .submit p{flex-basis:100%;font-size:13px}
+@media (max-width:900px){
+  .claim-intro{position:static}
+  .choice.c5{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .choice.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .choice.c3,.choice.c5{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps-form .submit .btn{flex:1}
+}

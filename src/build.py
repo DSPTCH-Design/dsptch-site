@@ -868,6 +868,195 @@ def offer():
 {footer(show_close=False)}""" + tail()
 
 
+# ---------------------------------------------------------------- free homepage (paid ads landing page)
+# Meta Pixel: paste DaBoost's Pixel ID here to switch tracking on. Empty = no pixel, no ad cookies.
+FB_PIXEL_ID = ""
+FH_SPOTS = "10"          # free homepage designs we take on per month (keep this true)
+FH_SLUGS = ["vela-aesthetics", "davyn", "arena"]
+
+FH_YEARS = ["Under 1 year", "1–3 years", "3–10 years", "10+ years"]
+FH_TEAM = ["Just me", "2–5", "6–20", "20+"]
+FH_INDUSTRY = ["Home services", "Healthcare & wellness", "Legal", "Professional services",
+               "Restaurant & hospitality", "Retail", "Other"]
+FH_PAIN = ["It looks outdated", "It doesn't bring in customers", "It's not mobile-friendly",
+           "It's hard to update", "Something else"]
+FH_BUDGET = [("Under $3,500", ""), ("$3,500 – $5,500", "Refresh"), ("$5,500 – $9,500", "Elevate"),
+             ("$9,500+", "Accelerate"), ("Not sure yet", "")]
+
+
+def pixel(event_on_load=""):
+    if not FB_PIXEL_ID:
+        return ""
+    extra = f"fbq('track','{event_on_load}');" if event_on_load else ""
+    return (f"<script>!function(f,b,e,v,n,t,s){{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)}};"
+            f"if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;"
+            f"s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');"
+            f"fbq('init','{FB_PIXEL_ID}');fbq('track','PageView');{extra}</script>\n")
+
+
+def lp_head(title, desc, event_on_load=""):
+    h = head(title, desc)
+    return h.replace("</head>", '<meta name="robots" content="noindex">\n' + pixel(event_on_load) + "</head>")
+
+
+def chips(name, options, req=True, cols=""):
+    r = " required" if req else ""
+    out = []
+    for o in options:
+        val, sub = (o if isinstance(o, tuple) else (o, ""))
+        out.append(f'<label><input type="radio" name="{name}" value="{e(val)}"{r}><b>{e(val)}</b>{f"<span>{sub}</span>" if sub else ""}</label>')
+    return f'<div class="choice chips{(" " + cols) if cols else ""}">{"".join(out)}</div>'
+
+
+def q(label, ctl, full=True):
+    return f'<div class="field{" full" if full else ""}"><span class="qlabel">{label}</span>{ctl}</div>'
+
+
+def free_homepage():
+    work = [next(p for p in PROJECTS if p["slug"] == s) for s in FH_SLUGS]
+    return lp_head("Free Homepage Design — DSPTCH Design",
+                   "We'll design a custom homepage for your business, free. Love it, and we'll build the rest.", "ViewContent") + SPRITE + f"""<div class="top">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" aria-label="DSPTCH Design home"><svg class="logo"><use href="#logo"/></svg></a>
+      <a class="btn or" href="#claim">Get My Free Design</a>
+    </nav>
+    <header class="hero">
+      <span class="dot">Free homepage design · {FH_SPOTS} spots this month</span>
+      <h1>Your business grew. <span>Your website should too.</span></h1>
+      <div class="hero-bot">
+        <p>We'll design a custom homepage for your business, free. Love it, and we'll build the rest. Not for you? You owe us nothing.</p>
+        <div class="ctas"><a class="btn or" href="#claim">Get My Free Homepage Design</a><a class="btn ghost" href="#how">See How It Works</a></div>
+      </div>
+    </header>
+  </div>
+</div>
+
+<section class="wrap sec">
+  <div class="head"><h2 class="lp-lead">A few homepages we've designed. <span class="mute">Yours will look like your business, not like these.</span></h2></div>
+  <div class="grid">{"".join(card(p) for p in work)}</div>
+</section>
+
+<section class="wrap sec" id="how">
+  <div class="head"><h2>Three steps. <span class="mute">No commitment.</span></h2></div>
+  <ol class="steps n3">
+    <li><h3>Tell us about your business.</h3><p>A two-minute form about your business and your current site.</p></li>
+    <li><h3>We design your new homepage.</h3><p>A senior designer creates a custom homepage around your brand, your services and your customers.</p></li>
+    <li><h3>You decide.</h3><p>We walk you through it on a 30-minute call. Love it? We build your full site. Not for you? No strings.</p></li>
+  </ol>
+</section>
+
+<section class="dark">
+  <div class="wrap sec">
+    <div class="split">
+      <span class="dot">What's included</span>
+      <div class="body"><h2 class="h2s">A custom homepage design for your business, presented on a call. <span class="mute">Not a template, not an audit, not a sales pitch dressed up as a mockup.</span></h2></div>
+    </div>
+    <div class="split">
+      <span class="dot">You'll see</span>
+      <div class="body"><ul class="tags"><li>Custom layout</li><li>Your colors and brand</li><li>Clear messaging</li><li>Mobile view</li><li>30-minute walkthrough</li></ul>
+      <p class="mute">The free design is presented on a call. Design files and a built website come with a package.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="head"><h2>Agency-level design. <span class="mute">Without the agency overhead.</span></h2></div>
+  <div class="cols3">
+    <div><h3>Senior people only.</h3><p>Two creative leaders with over 20 years each designing for national brands.</p></div>
+    <div><h3>Custom, never templated.</h3><p>Every site is designed around the business it's for.</p></div>
+    <div><h3>Clear, fixed pricing.</h3><p>You know the scope, the price and the timeline before we start.</p></div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="head"><h2>If you love it, <span class="mute">here's what's next.</span></h2><span class="dot">Your free design carries into any package</span></div>
+  {pk_cards().replace('href="start.html?package=', 'href="#claim" data-pkg="')}
+</section>
+
+<section class="wrap">
+  <div class="split">
+    <span class="dot">Questions</span>
+    {faq([
+        ("Is it really free?", "Yes. We design your homepage and walk you through it at no cost, with no obligation."),
+        ("Why would you do this for free?", "Because seeing your own business, redesigned, is the best way to judge whether we're right for you."),
+        (f"Why only {FH_SPOTS} a month?", "Each design is done by a senior designer, so we cap how many we take on."),
+        ("Who is this for?", "Established businesses whose website no longer reflects how good they are. If you're just starting out, a package or template may suit you better."),
+        ("What do I need to provide?", "Your current website if you have one, your logo, and a few minutes on the form."),
+        ("How long does it take?", "We'll be in touch within two business days and present your design within about a week."),
+    ])}
+  </div>
+</section>
+
+<section class="wrap sec" id="claim">
+  <div class="split">
+    <div class="claim-intro">
+      <span class="dot">{FH_SPOTS} spots this month</span>
+      <h2>Claim your free <span class="mute">homepage design.</span></h2>
+      <p class="mute">Two minutes. We review every request and reply within two business days.</p>
+    </div>
+    <form class="form steps-form" name="free-homepage" method="POST" action="free-homepage-thanks.html" data-netlify="true" netlify-honeypot="company-website" data-steps novalidate>
+      <input type="hidden" name="form-name" value="free-homepage">
+      <input type="hidden" name="source" id="source">
+      <input type="hidden" name="utm_campaign" data-utm="utm_campaign">
+      <input type="hidden" name="utm_content" data-utm="utm_content">
+      <input type="hidden" name="package_interest" id="pkg-interest">
+      <p class="hp"><label>Leave this empty <input name="company-website"></label></p>
+
+      <div class="progress" aria-hidden="true"><i></i><i></i><i></i></div>
+
+      <fieldset class="fs" data-step="1">
+        <legend><small>Step 1 of 3</small>Your business</legend>
+        <div class="fgrid">
+          {field("fh-name", "Full name", req=True)}
+          {field("fh-business", "Business name", req=True)}
+          <div class="field full"><label for="fh-url">Current website *</label>
+            <input id="fh-url" name="current-website" type="text" inputmode="url" autocomplete="url" placeholder="yourbusiness.com" required>
+            <label class="check"><input type="checkbox" name="no-website" value="yes" data-nosite> We don't have a website yet</label></div>
+          {field("fh-industry", "Industry", "select", req=True, full=True, options=FH_INDUSTRY)}
+        </div>
+      </fieldset>
+
+      <fieldset class="fs" data-step="2" hidden>
+        <legend><small>Step 2 of 3</small>Your website</legend>
+        {q("How long have you been in business? *", chips("years-in-business", FH_YEARS, cols="c4"))}
+        {q("How many people work in your business? *", chips("team-size", FH_TEAM, cols="c4"))}
+        {field("fh-pain", "What bothers you most about your current site?", "select", req=True, full=True, options=FH_PAIN)}
+        {q("If you love the design, what would you invest in a new website? *", chips("budget", FH_BUDGET, cols="c5"))}
+      </fieldset>
+
+      <fieldset class="fs" data-step="3" hidden>
+        <legend><small>Step 3 of 3</small>How we reach you</legend>
+        {q("Are you the decision-maker for your website? *", chips("decision-maker", ["Yes", "I'd involve someone else"], cols="c2"))}
+        <div class="fgrid">
+          {field("fh-email", "Email", type_="email", req=True)}
+          {field("fh-phone", "Phone", type_="tel", req=True)}
+        </div>
+        {q("Best time to reach you *", chips("best-time", ["Morning", "Afternoon", "Evening"], cols="c3"))}
+        {field("fh-notes", "Anything else we should know?", "textarea", full=True, ph="Optional")}
+      </fieldset>
+
+      <p class="step-err" role="alert" hidden>Please answer the questions above to continue.</p>
+      <div class="submit">
+        <button class="btn ghost" type="button" data-back hidden>Back</button>
+        <button class="btn or" type="button" data-next>Next</button>
+        <button class="btn or" type="submit" data-send hidden>Claim My Free Design</button>
+        <p>No obligation. We'll never share your information.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+{footer(show_close=False)}""" + tail()
+
+
+def free_homepage_thanks():
+    return lp_head("You're In — DSPTCH Design", "We've received your free homepage request.", "Lead") + SPRITE + page_hero(
+        "", "Request received", "You're in. <span>We'll be in touch soon.</span>",
+        "We review every request personally. If your business is a fit, we'll reach out within two business days to schedule your walkthrough.",
+        '<a class="btn or" href="work.html">See Our Work</a>') + footer(show_close=False) + tail()
+
+
 # ---------------------------------------------------------------- legal + 404
 LEGAL_UPDATED = "November 6, 2026"
 
@@ -1130,6 +1319,7 @@ def build():
         "index.html": home(), "websites.html": websites(), "packages.html": packages(), "work.html": work(),
         "website-work.html": website_work(), "design-support.html": design_support(), "design-plans.html": design_plans(),
         "about.html": about(), "start.html": start(), "thanks.html": thanks(), "website-offer.html": offer(),
+        "free-homepage.html": free_homepage(), "free-homepage-thanks.html": free_homepage_thanks(),
         "privacy.html": legal("privacy"), "terms.html": legal("terms"), "404.html": notfound(),
     }
     for i, p in enumerate(real()):
@@ -1153,7 +1343,7 @@ def build():
             "/websites/pricing  /packages  301", "/work/websites  /website-work  301",
             "/design-support/pricing  /design-plans  301"]
     (OUT / "_redirects").write_text("\n".join(red) + "\n")
-    urls = ["" if n == "index.html" else n[:-5] for n in out if n not in ("404.html", "thanks.html")]
+    urls = ["" if n == "index.html" else n[:-5] for n in out if n not in ("404.html", "thanks.html", "free-homepage.html", "free-homepage-thanks.html")]
     sm = "".join(f"<url><loc>https://dsptchdesign.com/{u}</loc></url>" for u in urls)
     (OUT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sm}</urlset>')
     (OUT / "robots.txt").write_text("User-agent: *\nAllow: /\nSitemap: https://dsptchdesign.com/sitemap.xml\n")
