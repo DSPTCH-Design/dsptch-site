@@ -1031,7 +1031,7 @@ def free_homepage():
         {q("Are you the decision-maker for your website? *", chips("decision-maker", ["Yes", "I'd involve someone else"], cols="c2"))}
         <div class="fgrid">
           {field("fh-email", "Email", type_="email", req=True)}
-          {field("fh-phone", "Phone", type_="tel", req=True)}
+          {field("fh-phone", "Phone (optional)", type_="tel")}
         </div>
         {q("Best time to reach you *", chips("best-time", ["Morning", "Afternoon", "Evening"], cols="c3"))}
         {field("fh-notes", "Anything else we should know?", "textarea", full=True, ph="Optional")}
