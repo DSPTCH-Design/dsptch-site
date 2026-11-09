@@ -880,8 +880,8 @@ FH_INDUSTRY = ["Home services", "Healthcare & wellness", "Legal", "Professional 
                "Restaurant & hospitality", "Retail", "Other"]
 FH_PAIN = ["It looks outdated", "It doesn't bring in customers", "It's not mobile-friendly",
            "It's hard to update", "Something else"]
-FH_BUDGET = [("Under $3,500", ""), ("$3,500 – $5,500", "Refresh"), ("$5,500 – $9,500", "Elevate"),
-             ("$9,500+", "Accelerate"), ("Not sure yet", "")]
+FH_INVEST = ["Yes", "Possibly, I'd want to talk it through", "Not right now"]
+FH_PAGES = ["1–5", "6–10", "11+", "Not sure"]
 
 
 def pixel(event_on_load=""):
@@ -1022,7 +1022,8 @@ def free_homepage():
         {q("How long have you been in business? *", chips("years-in-business", FH_YEARS, cols="c4"))}
         {q("How many people work in your business? *", chips("team-size", FH_TEAM, cols="c4"))}
         {field("fh-pain", "What bothers you most about your current site?", "select", req=True, full=True, options=FH_PAIN)}
-        {q("If you love the design, what would you invest in a new website? *", chips("budget", FH_BUDGET, cols="c5"))}
+        {q("Roughly how many pages does your current site have? *", chips("page-count", FH_PAGES, cols="c4"))}
+        {q("Our websites start at $3,500. If you love your new homepage, is that a realistic investment for your business right now? *", chips("investment-fit", FH_INVEST, cols="c3"))}
       </fieldset>
 
       <fieldset class="fs" data-step="3" hidden>
