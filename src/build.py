@@ -9,6 +9,8 @@ import html, json, os, shutil, pathlib
 HERE = pathlib.Path(__file__).parent
 OUT = HERE.parent / "site"
 EMAIL = "hello@dsptchdesign.com"
+PHONE = "(773) 270-1730"
+PHONE_TEL = "+17732701730"
 
 # ---------------------------------------------------------------- projects
 # type: "website" or "creative".  basis: "Bespoke engagement" | "DSPTCH package" | "Concept"
@@ -117,6 +119,11 @@ e = html.escape
 
 
 # ---------------------------------------------------------------- partials
+ORG_LD = json.dumps({"@context": "https://schema.org", "@type": "ProfessionalService", "name": "DSPTCH Design",
+    "url": "https://dsptchdesign.com/", "email": EMAIL, "telephone": PHONE_TEL,
+    "description": "Premium, fixed-scope websites and on-demand creative support."})
+
+
 def head(title, desc, full=True):
     meta = f"""<title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
@@ -136,6 +143,7 @@ def head(title, desc, full=True):
 {meta}
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
+<script type="application/ld+json">{ORG_LD}</script>
 </head>
 <body>
 """
@@ -196,7 +204,7 @@ def footer(close_h="It's time for an upgrade.", close_cta=("start.html", "Start 
     return f"""<section class="wrap">
   {close}
   <footer class="foot">
-    <span class="mail">{EMAIL}</span>
+    <span class="contact"><span class="mail">{EMAIL}</span><a class="tel" href="tel:{PHONE_TEL}">{PHONE}</a></span>
     <ul><li><a href="websites.html">Websites</a></li><li><a href="packages.html">Packages</a></li><li><a href="design-support.html">Design Support</a></li><li><a href="work.html">Work</a></li><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li></ul>
   </footer>
   <svg class="logo giant" aria-hidden="true"><use href="#logo"/></svg>
@@ -790,6 +798,7 @@ def start():
 
     <div class="submit">
       <button class="btn or" type="submit">Get My Recommendation</button>
+      <p class="talk">Prefer to talk? Call <a href="tel:{PHONE_TEL}">{PHONE}</a> or email <span class="mail">{EMAIL}</span>.</p>
       <p>We'll review your details and follow up with the next step. Submitting an inquiry does not reserve a launch date.</p>
     </div>
   </form>
